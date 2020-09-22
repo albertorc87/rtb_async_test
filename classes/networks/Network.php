@@ -2,18 +2,40 @@
 
 class Network
 {
+    /**
+     * Método que utilizamos para comunicarnos con una red, por defecto tenemos GET
+     * @var string
+     */
     protected $method = 'GET';
 
+    /**
+     * Url de la red
+     * @var string
+     */
     protected $url = null;
 
+    /**
+     * Nombre de la red
+     * @var string
+     */
     protected $name = null;
 
-    protected $exec_by_network = 1;
-
+    /**
+     * Identificador del lanzamiento para saber el id de la iteración
+     * @var int
+     */
     private $id = null;
 
-    protected $params = '';
+    /**
+     * Parámetros que vamos a enviar a la red
+     * @var array
+     */
+    protected $params = null;
 
+    /**
+     * Directorio del archivo donde vamos a guardar los logs y si obtenemos la respuesta correcta del servidor
+     * @var string
+     */
     protected $file_ouput = '';
 
     public function __construct(int $id, string $params, string $file_ouput)
@@ -23,31 +45,19 @@ class Network
         $this->file_ouput = $file_ouput;
     }
 
-    public function getMethod(): string
-    {
-        return $this->method;
-    }
-
-    public function getURL(): string
-    {
-        return $this->url;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getExecByNetwork(): int
-    {
-        return $this->exec_by_network;
-    }
-
+    /**
+     * Método para guardar el contenido de la respuesta válida
+     * @return void
+     */
     public function saveDataFileOutput(string $content): void
     {
         file_put_contents($this->file_ouput, $content);
     }
 
+    /**
+     * Método para añadir una línea en el log
+     * @return void
+     */
     public function addLineLog($line):void
     {
         $fp = fopen($this->file_ouput . '_log', 'a');
@@ -55,6 +65,10 @@ class Network
         fclose($fp);
     }
 
+    /**
+     * Método para lanzar una llamada curl de forma sencilla
+     * @return array
+     */
     public function throwCURL($url = '', $data = [])
     {
         if (!isset($data['user.agent']) || !$data['user.agent']) {
@@ -229,6 +243,10 @@ class Network
         return $return;
     }
 
+    /**
+     * Comprobamos si tenemos ya tenemos la respuesta correcta y si es así paramos el proceso
+     * @return void
+     */
     public function hasResponse(): void
     {
         if (file_get_contents($this->file_output)) {
@@ -236,6 +254,10 @@ class Network
         }
     }
 
+    /**
+     * En este método tratamos la respuesta que recibimos de la red, desde la clase hija se llama a esta parte del código con parent
+     * @return void
+     */
     public function run($data = []):void
     {
         $this->hasResponse();

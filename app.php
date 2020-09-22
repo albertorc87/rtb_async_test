@@ -7,7 +7,6 @@ const FILE_REQUEST = 'ExampleRequestPost.json';
 $route = getcwd() . '/' . FILE_REQUEST;
 
 $networks = getNetworks();
-cleanLogs();
 
 $launcher = new Launcher($route, $networks);
 $launcher->run();
@@ -29,17 +28,4 @@ function getNetworks(): array
     }
 
     return $list;
-}
-
-function cleanLogs()
-{
-    if ($logs = opendir('./logs')) {
-        while (false !== ($log = readdir($logs))) {
-            if (in_array($log, ['.', '..'])) {
-                continue;
-            }
-
-            unlink('./logs/' . $log);
-        }
-    }
 }
