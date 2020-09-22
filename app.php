@@ -8,7 +8,6 @@ $route = getcwd() . '/' . FILE_REQUEST;
 
 $networks = getNetworks();
 cleanLogs();
-exit;
 
 $launcher = new Launcher($route, $networks);
 $launcher->run();

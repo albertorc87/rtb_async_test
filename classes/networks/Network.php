@@ -231,6 +231,9 @@ class Network
 
     public function run($data = []):void
     {
+        if (file_get_contents($this->file_output)) {
+            die();
+        }
         $d = new DateTime();
 
         $line = $d->format('Y-m-d H:i:s.u') . ' ' . $this->name . ' ' . $this->id;

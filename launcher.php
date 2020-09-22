@@ -20,7 +20,7 @@ class Launcher
         foreach ($this->networks as $network_class) {
             // Para este ejemplo he añadido una funcionalidad para lanzar varias veces la misma red como solo tenemos una
             foreach (range(1, 50) as $id) {
-                $exec = 'start /B php classes/networks/' . $network_class . '.php ' . $id . ' "' . urlencode(json_encode($params)) . '" "' . $file_output . '"';
+                $exec = 'php classes/networks/' . $network_class . '.php ' . $id . ' "' . urlencode(json_encode($params)) . '" "' . $file_output . '" > /dev/null 2>/dev/null &';
                 exec($exec);
                 // Si ya tenemos el resultado que queremos paramos la ejecución
                 if (file_get_contents($file_output)) {
@@ -29,8 +29,6 @@ class Launcher
                 // echo 'For ' . $network->getName() . ' Num exec ' . $id . PHP_EOL;
             }
         }
-
-        // echo 'Time exec ' . $time . 'ms' . PHP_EOL;
 
         do {
 
