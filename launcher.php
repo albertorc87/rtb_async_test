@@ -16,7 +16,6 @@ class Launcher
         $file_output = getcwd() . '/logs/' . uniqid();
         file_put_contents($file_output, '');
 
-        $time_start = microtime(true);
         foreach ($this->networks as $network_class) {
             // Para este ejemplo he añadido una funcionalidad para lanzar varias veces la misma red como solo tenemos una
             foreach (range(1, 50) as $id) {
@@ -26,14 +25,15 @@ class Launcher
                 if (file_get_contents($file_output)) {
                     break 2;
                 }
-                // echo 'For ' . $network->getName() . ' Num exec ' . $id . PHP_EOL;
             }
         }
 
+        $time_start = microtime(true);
         do {
 
             // Si ya tenemos el ok paramos el proceso
             if (file_get_contents($file_output)) {
+                echo 'OK CONTENT' . PHP_EOL;
                 break;
             }
 
@@ -42,6 +42,7 @@ class Launcher
 
             // Si el proceso tarda más de 15ms paramos
             if ($time > 15) {
+                echo 'TIMEOUT' . PHP_EOL;
                 break;
             }
         } while (true);

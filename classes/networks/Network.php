@@ -210,10 +210,10 @@ class Network
             $return['cookies'] += $data['cookies'];
         }
 
-        if (preg_match_all('/[Ss]et-[Cc]ookie: (.*)/', $return['pageHeader'], $m)) {
-            foreach ($m[0] as $k => $dummy) {
+        if (preg_match_all('/[Ss]et-[Cc]ookie: (.*)/', $return['pageHeader'], $match)) {
+            foreach ($match[0] as $k => $dummy) {
                 $cookie = [];
-                if (preg_match_all('/([a-zA-Z0-9\-_\.]*)=([^;]*)/i', $m[1][$k], $c)) {
+                if (preg_match_all('/([a-zA-Z0-9\-_\.]*)=([^;]*)/i', $match[1][$k], $c)) {
                     foreach ($c[0] as $k=>$v) {
                         $cookie[$c[1][$k]] = $c[2][$k];
                     }
@@ -229,11 +229,16 @@ class Network
         return $return;
     }
 
-    public function run($data = []):void
+    public function hasResponse(): void
     {
         if (file_get_contents($this->file_output)) {
             die();
         }
+    }
+
+    public function run($data = []):void
+    {
+        $this->hasResponse();
         $d = new DateTime();
 
         $line = $d->format('Y-m-d H:i:s.u') . ' ' . $this->name . ' ' . $this->id;

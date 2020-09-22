@@ -31,7 +31,8 @@ class TappxS2S extends Network
             'timeout' => $this->timeout,
         ];
         $url = $this->url . '?' . http_build_query($params);
-
+        
+        $this->hasResponse();
         $data = $this->throwCURL($url, $data);
 
         parent::run($data);
