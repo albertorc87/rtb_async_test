@@ -1,0 +1,82 @@
+{
+  "id": "58a32ea76badd",
+  "at": 1,
+  "allimps": 0,
+  "test": 0,
+  "tmax": 1200,
+  "imp": [
+    {
+      "id": "c4ca4238a0b923820dcc509a6f75849b",
+      "bidfloorcur": "USD",
+      "secure": 0,
+      "banner": {
+        "w": 320,
+        "h": 480,
+        "pos": 1,
+        "battr": [
+          1,
+          3,
+          8,
+          9,
+          10,
+          11
+        ],
+        "api": [
+          3,
+          5
+        ],
+        "id": "banner_1"
+      },
+      "tagid": "2456280990",
+      "bidfloor": 0.1,
+      "instl": 1
+    }
+  ],
+  "user": {
+    "id": "fc7d629ba40c2abd40a5fe47941edf37",
+    "yob": 1992,
+    "gender": "F"
+  },
+  "app": {
+    "id": "13377",
+    "name": "TriviaCrack",
+    "domain": "https://www.triviacrack.com/",
+    "bundle": "com.etermax.preguntados.lite",
+    "storeurl": "https://play.google.com/store/apps/details?id=com.etermax.preguntados.lite&hl=en",
+    "cat": [
+      "IAB9-7"
+    ],
+    "paid": 0
+  },
+  "device": {
+    "lmt": 0,
+    "geo": {
+      "country": "NLD",
+      "city": "amsterdam",
+      "zip": "1011",
+      "lat": 52.370998382568,
+      "lon": 4.9040999412537,
+      "type": 1
+    },
+    "ua": "Mozilla/5.0 (Linux; Android 4.4.3; HTC One Build/KTU84L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.102 Mobile Safari/537.36",
+    "ip": "213.127.223.58",
+    "make": "HTC",
+    "model": "One",
+    "os": "Android",
+    "osv": "4.4.3",
+    "js": 1,
+    "carrier": "chello",
+    "language": "en",
+    "connectiontype": 0,
+    "dpidsha1": "4dfaa92388699ac6539885aef1719293879985bf",
+    "dpidmd5": "5756ae9022b2ea1e47d84fead75220c8",
+    "ifa": "38400000-8cf0-11bd-b23e-10b96e40000d"
+  },
+  "bcat": [
+    "IAB11",
+    "IAB23",
+    "IAB24",
+    "IAB25",
+    "IAB26"
+  ]
+}
